@@ -3,8 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
-	
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+	        http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+            http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig"> 
@@ -23,6 +24,9 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="datasource"></property>
     </bean>  
-  
-		
+    
+    <mybatis-spring:scan base-package="com.sejin.mapper"/>
+    <context:component-scan base-package="com.sejin.model"></context:component-scan>
+    <context:component-scan base-package="com.sejin.service"></context:component-scan>
+
 </beans>
