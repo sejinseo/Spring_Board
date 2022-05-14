@@ -6,5 +6,10 @@
 	<insert id="enroll">
 		insert into board(title, content, writer) values(#{title}, #{content}, #{writer})
 	</insert>
+	
+	<!-- 게시판 목록 -->
+	<select id="getList" resultType="com.sejin.model.BoardVO">
+		select * from board
+	</select>
 
 </mapper>
