@@ -51,4 +51,12 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	
+	// 게시판 조회
+	@GetMapping("/get")
+	public void boardGetPage(int bno, Model model) {
+		
+		model.addAttribute("pageInfo", boardService.getPage(bno));
+		
+	}
+	
 }

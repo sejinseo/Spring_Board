@@ -33,9 +33,18 @@ public class BoardServiceTest {
 //	}
 
 	// 게시판 목록 테스트
+//	@Test
+//	public void testGetList() {
+//		service.getList().forEach(board -> log.info("" + board));
+//	}
+	
+	// 게시판 조회
 	@Test
-	public void testGetList() {
-		service.getList().forEach(board -> log.info("" + board));
+	public void testGetPage() {
+		
+		int bno = 1;
+		
+		log.info("" + service.getPage(bno));
 	}
 
 }
