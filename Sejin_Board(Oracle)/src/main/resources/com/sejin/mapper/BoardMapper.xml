@@ -16,5 +16,10 @@
 	<select id="getPage" resultType="com.sejin.model.BoardVO">
 		select * from board where bno = #{bno}
 	</select>
+	
+	<!-- 게시판 수정 -->
+	<update id="modify">
+		update board set title = #{title}, content = #{content}, updatedate = sysdate where bno = #{bno}
+	</update>
 
 </mapper>

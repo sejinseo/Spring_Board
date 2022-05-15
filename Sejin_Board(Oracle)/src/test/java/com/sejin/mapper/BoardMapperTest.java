@@ -58,13 +58,25 @@ public class BoardMapperTest {
 //    }
 	
 	// 게시판 조회
+//	@Test
+//	public void testGetPage() {
+//		
+//		// 데이터 베이스에 존재하는 페이지
+//		int bno = 1;
+//		
+//		log.info("" + mapper.getPage(bno));
+//	}
+	
 	@Test
-	public void testGetPage() {
+	public void testModify() {
 		
-		// 데이터 베이스에 존재하는 페이지
-		int bno = 1;
+		BoardVO board = new BoardVO();
+		board.setBno(9);
+		board.setTitle("수정 제목");
+		board.setContent("수정 내용");
 		
-		log.info("" + mapper.getPage(bno));
+		int result = mapper.modify(board);
+		log.info("result : " + result);
 	}
 
 }
