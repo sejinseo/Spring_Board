@@ -39,5 +39,11 @@
     ]]>
     
     </select>
+    
+    <!-- 게시물 총 갯수 -->
+    <select id="getTotal" resultType="int">
+    	select count(*) from board
+    	
+    </select>
 
 </mapper>

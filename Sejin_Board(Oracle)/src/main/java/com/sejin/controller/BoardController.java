@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sejin.model.BoardVO;
 import com.sejin.model.Criteria;
+import com.sejin.model.PageMakeDTO;
 import com.sejin.service.BoardService;
 
 @Controller
@@ -40,6 +41,12 @@ public class BoardController {
 		log.info("boardListGET");
 		
 		model.addAttribute("list", boardService.getListPaging(cri));
+		
+		int total = boardService.getTotal();
+		
+		PageMakeDTO pageMake = new PageMakeDTO(cri, total);
+		
+		model.addAttribute("pageMake", pageMake);
 		
 	}
 	

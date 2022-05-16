@@ -90,16 +90,17 @@ public class BoardMapperTest {
 //	}
 	
 	// 게시판 목록(페이징 적용)
-	@Test
-	public void testGetListPaging() {
-		
-		Criteria cri = new Criteria();
-		
-		cri.setPageNum(3);
-		
-		List list = mapper.getListPaging(cri);
-		
-		list.forEach(board -> log.info("" + board));
-	}
+//	@Test
+//	public void testGetListPaging() {
+//		
+//		Criteria cri = new Criteria();
+//		
+//		cri.setPageNum(3);
+//		
+//		List list = mapper.getListPaging(cri);
+//		
+//		list.forEach(board -> log.info("" + board));
+//	}
+
 
 }

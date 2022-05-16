@@ -53,6 +53,26 @@
     border: 1px solid #ddd;
     font-weight: 600;
   }
+    .pageInfo{
+      list-style : none;
+      display: inline-block;
+    margin: 50px 0 0 100px;      
+  }
+  .pageInfo li{
+      float: left;
+    font-size: 20px;
+    margin-left: 18px;
+    padding: 7px;
+    font-weight: 500;
+  }
+ a:link {color:black; text-decoration: none;}
+ a:visited {color:black; text-decoration: none;}
+ a:hover {color:black; text-decoration: underline;}
+  
+  .active{
+      background-color: #cdd5ec;
+  }
+ 
   </style>
 </head>
 <body>
@@ -84,7 +104,31 @@
 				</tr>
 			</c:forEach>
 		</table>
+			 
+	    <div class="pageInfo_wrap" >
+	        <div class="pageInfo_area">
+	        	<ul id="pageInfo" class="pageInfo">
+	        		<!-- 이전 페이지 버튼 -->
+	        		<c:if test="${pageMake.prev}">
+	        			<li class="pageInfo_btn previous"><a href="${pageMake.startPage - 1}">Previous</a></li>
+	        		</c:if>
+	        	
+	                <!-- 각 번호 페이지 버튼 -->
+	                <c:forEach var="num" begin="${pageMake.startPage}" end="${pageMake.endPage}">
+	                    <li class="pageInfo_btn ${pageMake.cri.pageNum == num ? "active":""}"><a href="${num}">${num}</a></li>
+	                </c:forEach>
+	                
+		            <!-- 다음페이지 버튼 -->
+	                <c:if test="${pageMake.next}">
+	                    <li class="pageInfo_btn next"><a href="${pageMake.endPage + 1 }">Next</a></li>
+	                </c:if>    
+                </ul>
+	        </div>
+	    </div>
+	    	 
 		<form id="moveForm" method="get">
+			<input type="hidden" name="pageNum" value="${pageMake.cri.pageNum}">
+			<input type="hidden" name="amount" value="${pageMake.cri.amount}">
 		</form>
 	</div>
 	<script>
@@ -122,7 +166,14 @@
 	    	moveForm.append("<input type='hidden' name='bno' value='"+ $(this).attr("href")+ "'>");
 		    moveForm.attr("action", "/board/get");
 		    moveForm.submit();
-	    })
+	    });
+	    
+	    $(".pageInfo a").on("click", function(e){
+	    	e.preventDefault();
+	    	moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+	    	moveForm.attr("action", "/board/list");
+	    	moveForm.submit();
+	    });
 	    
  
 	</script>
