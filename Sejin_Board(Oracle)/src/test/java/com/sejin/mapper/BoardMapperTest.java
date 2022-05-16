@@ -14,6 +14,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.sejin.model.BoardVO;
+import com.sejin.model.Criteria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration( locations = {"file:src/main/webapp/WEB-INF/spring/root-context.xml"})
@@ -80,12 +81,25 @@ public class BoardMapperTest {
 //	}
 	
 	// 게시판 삭제
+//	@Test
+//	public void delete() {
+//		
+//		int result = mapper.delete(1);
+//		
+//		log.info("result : " + result);
+//	}
+	
+	// 게시판 목록(페이징 적용)
 	@Test
-	public void delete() {
+	public void testGetListPaging() {
 		
-		int result = mapper.delete(1);
+		Criteria cri = new Criteria();
 		
-		log.info("result : " + result);
+		cri.setPageNum(3);
+		
+		List list = mapper.getListPaging(cri);
+		
+		list.forEach(board -> log.info("" + board));
 	}
 
 }

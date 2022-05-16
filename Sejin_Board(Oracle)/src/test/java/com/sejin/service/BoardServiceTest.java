@@ -1,5 +1,7 @@
 package com.sejin.service;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -9,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.sejin.model.BoardVO;
+import com.sejin.model.Criteria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -60,10 +63,21 @@ public class BoardServiceTest {
 //	}
 
 	// 게시판 삭제
+//	@Test
+//	public void delete() {
+//		int result = service.delete(2);
+//		
+//		log.info("result : " + result);
+//	}
+	
+	// 게시판 목록(페이징)
 	@Test
-	public void delete() {
-		int result = service.delete(2);
+	public void testGetListPaging() {
 		
-		log.info("result : " + result);
+		Criteria cri = new Criteria();
+		
+		List list = service.getListPaging(cri);
+		
+		list.forEach(board -> log.info("" + board));
 	}
 }
