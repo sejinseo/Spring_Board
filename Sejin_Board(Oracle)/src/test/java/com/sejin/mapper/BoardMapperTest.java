@@ -67,15 +67,24 @@ public class BoardMapperTest {
 //		log.info("" + mapper.getPage(bno));
 //	}
 	
+//	@Test
+//	public void testModify() {
+//		
+//		BoardVO board = new BoardVO();
+//		board.setBno(9);
+//		board.setTitle("수정 제목");
+//		board.setContent("수정 내용");
+//		
+//		int result = mapper.modify(board);
+//		log.info("result : " + result);
+//	}
+	
+	// 게시판 삭제
 	@Test
-	public void testModify() {
+	public void delete() {
 		
-		BoardVO board = new BoardVO();
-		board.setBno(9);
-		board.setTitle("수정 제목");
-		board.setContent("수정 내용");
+		int result = mapper.delete(1);
 		
-		int result = mapper.modify(board);
 		log.info("result : " + result);
 	}
 
