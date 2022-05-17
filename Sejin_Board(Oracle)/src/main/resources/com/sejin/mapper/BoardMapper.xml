@@ -33,9 +33,19 @@
     <![CDATA[      
         select bno, title, content, writer, regdate, updatedate from(     
                 select /*+INDEX_DESC(board pk_board) */ rownum as rn, bno, title, content, writer, regdate, updatedate                 
-                from board where rownum <= #{pageNum} * #{amount})                
-        where rn > (#{pageNum} -1) * #{amount}
+                from board where rownum <= #{pageNum} * #{amount}                
+        
+    ]]>
     
+    	<if test="keyword != null">
+    		and title like '%'||#{keyword}||'%'
+    	</if>
+    
+    <![CDATA[
+    			)
+    			
+    	where rn > (#{pageNum} -1) * #{amount}
+    	
     ]]>
     
     </select>
@@ -43,6 +53,10 @@
     <!-- 게시물 총 갯수 -->
     <select id="getTotal" resultType="int">
     	select count(*) from board
+    	
+    	<if test="keyword != null">
+    		where title like '%'||#{keyword}||'%'
+    	</if>
     	
     </select>
 
