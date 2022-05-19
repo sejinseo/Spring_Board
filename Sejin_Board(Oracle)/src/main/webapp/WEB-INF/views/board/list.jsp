@@ -13,7 +13,7 @@
   crossorigin="anonymous"></script>
   
    <style>
-  a{
+  a{  
   	text-decoration : none;
   }
   table{

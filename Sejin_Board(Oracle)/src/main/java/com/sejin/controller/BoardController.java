@@ -26,7 +26,7 @@ public class BoardController {
 	
 	// 게시판 목록 페이지 접속
 //	@GetMapping("/list")
-//	// => @RequestMapping(value="list", method=RequestMethod.GET)
+//  => @RequestMapping(value="list", method=RequestMethod.GET)
 //	public void boardListGET(Model model) {
 //		
 //		log.info("게시판 목록 페이지 진입");
