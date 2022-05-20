@@ -121,6 +121,7 @@
 		form.attr("method", "post");
 		form.submit();
 	});
+	
 </script>	
 </body>
 </html>
